@@ -96,6 +96,28 @@ Po zakończeniu wszystkich iteracji algorytm zwraca najlepszą znalezioną tras�
 
 ### Zrzuty ekranu z działania aplikacji
 
+1. Widok startowy
+![2023-12-14 23_45_27-Ustawienia](https://github.com/Majkel97/Algorytm-mrowkowy-Problem-komiwojazera-TSP/assets/96554804/6bfce875-f68e-4533-ac0d-48ec0e39e277)
+
+2. Załadowane przykładowe miasta
+![2023-12-14 23_45_48-](https://github.com/Majkel97/Algorytm-mrowkowy-Problem-komiwojazera-TSP/assets/96554804/2e6a9610-1309-41c7-b61a-5e4d0c1aaded)
+
+3. Ekran obliczania wyników
+![2023-12-14 23_46_10-Ustawienia](https://github.com/Majkel97/Algorytm-mrowkowy-Problem-komiwojazera-TSP/assets/96554804/39e8acbb-b074-4022-bada-9b116f24e912)
+
+4. Przedstawienie wyniku działania algorytmu
+![2023-12-14 23_52_16-Ustawienia](https://github.com/Majkel97/Algorytm-mrowkowy-Problem-komiwojazera-TSP/assets/96554804/bc9316ca-32e8-439b-8e4e-1080da649ffd)
+
+5. Opis zasady działania algorytmu dla usera
+![2023-12-14 23_52_27-](https://github.com/Majkel97/Algorytm-mrowkowy-Problem-komiwojazera-TSP/assets/96554804/7c93ca0c-6035-417c-9db7-e7f8b045b59e)
+
+6. Opis parametrów wykorzystywanych przez algorytm
+![2023-12-14 23_52_37-](https://github.com/Majkel97/Algorytm-mrowkowy-Problem-komiwojazera-TSP/assets/96554804/0513bb9c-5a2a-4aa5-9d88-e1f4b2fabc97)
+
+7. Formularz dodawania miast
+![image](https://github.com/Majkel97/Algorytm-mrowkowy-Problem-komiwojazera-TSP/assets/96554804/113332fb-2e5c-4583-a6c7-49d275785df6)
+
+
 ### Podsumowanie
 
 Projekt został zrealizowany zgodnie z założeniami, umożliwiając użytkownikowi planowanie trasy między różnymi miastami przy użyciu algorytmu optymalizacji kolonii mrówek. Wizualizacja trasy na mapie oraz dostęp do logów i parametrów algorytmu wspierają zrozumienie procesu optymalizacji. Algorytm może być konfigurowany pod kątem liczby mrówek, liczby iteracji, współczynników wpływu feromonu i odległości, oraz szybkości obliczeń odległości.
