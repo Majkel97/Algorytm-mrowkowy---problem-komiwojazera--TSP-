@@ -1,0 +1,59 @@
+{% load widget_tweaks %}
+{% load static %}
+{% with WIDGET_ERROR_CLASS='is-invalid' %}
+<div class="modal-content">
+	<div class="modal-header">
+		<h5 class="modal-title">Zasada działania algorytmu</h5>
+		<p data-dismiss="modal" aria-label="Close" style="cursor: pointer;">&#x2715;</p>
+	</div>
+	<div class="modal-body">
+		<div class="mb-3">
+            <p>
+                Algorytm optymalizacji kolonii mrówek jest metaheurystyką inspirowaną zachowaniami mrówek w poszukiwaniu żywności. 
+                Algorytm ten jest używany do rozwiązania problemu komiwojażera, czyli znalezienia najkrótszej trasy przechodzącej przez wszystkie lokalizacje dokładnie raz.
+            </p>
+        </div>
+        <hr>
+        <div class="mb-3">
+			<b>1. Inicjalizacja feromonów:</b>
+            <p>
+                Początkowo, feromony na wszystkich ścieżkach są ustawiane na równą wartość (w tym przypadku, wartość 1).
+            </p>
+        </div>
+        <hr>
+        <div class="mb-3">
+			<b>2. Iteracje i mrówki</b>
+            <p>
+                Dla każdej lokalizacji początkowej, dla każdej iteracji,
+                każda mrówka rozpoczyna trasę od danej lokalizacji.
+                Mrówki poruszają się po grafie, wybierając kolejne lokalizacje zgodnie z prawdopodobieństwem, które zależy od ilości feromonów na ścieżce oraz atrakcyjności trasy (określonej przez parametry alpha i beta).
+                Po przejściu trasy przez wszystkie lokalizacje, aktualizowane są feromony na poszczególnych ścieżkach. Im krótsza trasa, tym większa ilość feromonów jest pozostawiana.
+            </p>
+        </div>
+        <hr>
+        <div class="mb-3">
+			<b>3. Aktualizacja feromonów</b>
+            <p>
+                Feromony są aktualizowane po każdej iteracji na podstawie długości tras przebytych przez mrówki. Krótsze trasy otrzymują większą ilość feromonów, co zwiększa szanse wybrania danej ścieżki przez kolejne mrówki.
+            </p>
+        </div>
+        <hr>
+        <div class="mb-3">
+			<b>4. Rejestracja najlepszej trasy</b>
+            <p>
+                Algorytm śledzi najlepszą znalezioną trasę i jej długość w trakcie wszystkich iteracji i zapamiętuje te dane, aby porównać w koljenych iteracjach.
+            </p>
+        </div>
+        <hr>
+        <div class="mb-3">
+			<b>5. Wyniki</b>
+            <p>
+                Po zakończeniu wszystkich iteracji algorytm zwraca najlepszą znalezioną trasę i jej długość.
+            </p>
+        </div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-secondary" data-dismiss="modal"> Zamknij </button>
+	</div>
+</div>
+{% endwith %}

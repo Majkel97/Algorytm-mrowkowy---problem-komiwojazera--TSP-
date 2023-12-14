@@ -1,0 +1,12 @@
+django
+whitenoise
+pillow
+python-dotenv
+psycopg2
+debugpy
+django-crispy-forms==1.14.0
+requests
+geopy
+django-widget-tweaks
+numpy
+matplotlib

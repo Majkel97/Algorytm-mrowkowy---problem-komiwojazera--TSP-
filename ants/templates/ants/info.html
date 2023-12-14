@@ -1,0 +1,67 @@
+{% load widget_tweaks %}
+{% load static %}
+{% with WIDGET_ERROR_CLASS='is-invalid' %}
+<div class="modal-content">
+	<div class="modal-header">
+		<h5 class="modal-title">Opis parametrów</h5>
+		<p data-dismiss="modal" aria-label="Close" style="cursor: pointer;">&#x2715;</p>
+	</div>
+	<div class="modal-body">
+		<div class="mb-3">
+			<b>Liczba mrówek</b>
+            <p>
+                Liczbą całkowita większa od zera reprezentująca liczbę mrówek.
+                Możliwy zakres wartości w tym projekcie to od 1 do 100 mrówek.
+            </p>
+        </div>
+        <hr>
+        <div class="mb-3">
+            <b>Liczba iteracji</b>
+            <p>
+                Liczba całkowita większa od zera reprezentująca ile razy algorytm przejdzie przez całą populację mrówek.
+                Możliwy zakres wartości w tym projekcie to od 1 do 250 iteracji.
+            </p>
+        </div>
+        <hr>
+        <div class="mb-3">
+            <b>Alpha (waga feromonu)</b>
+            <p>
+                Liczba rzeczywista większa od zera, kontroluje jak bardzo mrówki kierują się ilością feromonu na ścieżkach.
+                Możliwy zakres wartości w tym projekcie to od 0.1 do 2.0.
+            </p>
+        </div>
+        <hr>
+        <div class="mb-3">
+            <b>Beta (waga heurystyki)</b>
+            <p>
+                Liczba rzeczywista większa od zera, kontroluje jak bardzo mrówki kierują się heurystyką, np. odległością między punktami.
+                Możliwy zakres wartości w tym projekcie to od 0.1 do 2.0.
+            </p>
+        </div>
+        <hr>
+        <div class="mb-3">
+            <b>Parowanie feromonów</b>
+            <p>
+                Liczba rzeczywista w zakresie 0.0 - 1.0. Określa, jak szybko feromony parują z krawędzi. Im bliżej wartości 1, tym feromony parują szybciej.
+            </p>
+        </div>
+        <hr>
+        <div class="mb-3">
+            <b>Pozostawaine feromony</b>
+            <p>
+                Liczba rzeczywista w zakresie 1.0 - 10.0. Określa, jak dużo feromonów pozostawiają mrówki na krawędziach.
+            </p>
+        </div>
+        <hr>
+        <div class="mb-3">
+            <b>Dokładność obliczeń</b>
+            <p>
+                Do wyboru wartość szybka lub dokładna. Algorytm posiada dwie funkcję do oblicznia odległości pomiedzy punktami - szybszą, która pokazuje przybliżone odległości pomiędzy punktami oraz dokładną, która oblicza odległości z uwzględnieniem krzywizny Ziemi.
+            </p>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-secondary" data-dismiss="modal"> Zamknij </button>
+	</div>
+</div>
+{% endwith %}

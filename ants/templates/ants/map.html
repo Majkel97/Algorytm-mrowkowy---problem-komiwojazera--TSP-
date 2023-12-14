@@ -1,0 +1,44 @@
+<div id="map" style="width: 100%; height: 600px"></div>
+<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+<script>
+    var mapOptions = {
+        center: [45, 45],
+        zoom: 2
+    }
+    var map = new L.map('map', mapOptions);
+
+    var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+    map.addLayer(layer);
+
+    var cities = [
+        {% for city in cities %}
+            [{{city.1}}, {{city.2}}, "{{city.0}}"],
+        {% endfor %}
+        // Add more cities as needed
+    ];
+
+    // Add markers for each city with text
+    for (var i = 0; i < cities.length; i++) {
+        var city = cities[i];
+        var marker = new L.Marker([city[0], city[1]]);
+        
+        // Create a popup with the city name
+        var popupContent = city[2]; // Display city name in the popup
+        var popup = new L.Popup().setContent(popupContent);
+        
+        // Attach the popup to the marker
+        marker.bindPopup(popup);
+        
+        // Add the marker to the map
+        marker.addTo(map);
+    }
+    {% if result %}
+        // Add lines between cities
+        for (var i = 0; i < cities.length - 1; i++) {
+            var line = [cities[i], cities[i + 1]];
+            var polyline = new L.Polyline(line, { color: 'blue' }).addTo(map);
+        }
+        var line = [cities[0], cities[cities.length - 1]];
+        var polyline = new L.Polyline(line, { color: 'blue' }).addTo(map);
+    {% endif %}
+</script>

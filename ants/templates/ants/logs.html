@@ -1,0 +1,16 @@
+<div class="border radius p-2" style="height: 200px; overflow-y: scroll;">
+    <p><b>Najlepsza droga: (dystans - trasa)</b></p>
+        {% if best_path_length %}
+            <b>{{best_path_length}}</b>
+            {%for elem in best_path %}
+                - {{elem}} 
+            {% endfor %}
+        {% endif %}
+    </ul><br>
+    <p><b>Logi:</b></p>
+    <u style="list-style-type: none; text-decoration: none;">
+    {% for log in logs %}
+        <li>{{log}}</li>
+    {% endfor %}
+    </ul>
+</div>

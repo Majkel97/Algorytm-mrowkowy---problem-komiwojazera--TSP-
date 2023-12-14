@@ -1,0 +1,8 @@
+<div class="border radius p-2" style="height: 200px; overflow-y: scroll;">
+    <p><b>Uzyte paramtery:</b></p>
+    <u style="list-style-type: none; text-decoration: none;">
+        {% for key, value in params.items %}
+            <li><b>{{ key }}:</b> {{ value }}</li>
+        {% endfor %}
+    </u>
+</div>

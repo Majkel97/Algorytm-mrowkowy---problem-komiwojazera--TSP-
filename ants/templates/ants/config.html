@@ -1,0 +1,61 @@
+{% load widget_tweaks %}
+{% load static %}
+{% load crispy_forms_tags%}
+{% with WIDGET_ERROR_CLASS='is-invalid' %}
+	<form class="border rounded pb-3 pl-3 pr-3" hx-post="{{ request.path }}" hx-headers='{"X-CSRFToken":"{{ csrf_token }}"}'>
+        <button type="submit" class="btn btn-primary mt-3 w-100" onclick="toggleBlur()">
+            Start
+        </button>
+        <hr>
+        <div>
+            <label for="{{ form.ants.id_for_label }}" class="form-label">Liczba mrówek:</label>
+            <span class="float-right" id="antsValue">50</span>
+            {% render_field form.ants class="form-control" placeholder="Liczba mrówek" %}
+        </div>
+        <div>
+            <label for="{{ form.iterations.id_for_label }}" class="form-label">Iteracje:</label>
+            <span class="float-right" id="iterationsValue">125</span>
+            {% render_field form.iterations class="form-control" placeholder="Iteracje" %}
+        </div>
+        <div>
+            <label for="{{ form.alpha.id_for_label }}" class="form-label">Alpha:</label>
+            <span class="float-right" id="alphaValue">1</span>
+            {% render_field form.alpha class="form-control" placeholder="Alpha" %}
+        </div>
+        <div>
+            <label for="{{ form.beta.id_for_label }}" class="form-label">Beta:</label>
+            <span class="float-right" id="betaValue">1</span>
+            {% render_field form.beta class="form-control" placeholder="Iteracje" %}
+        </div>
+        <div>
+            <label for="{{ form.evaporation_rate.id_for_label }}" class="form-label">Parowanie feromonów:</label>
+            <span class="float-right" id="evaporationRateValue">0.5</span>
+            {% render_field form.evaporation_rate class="form-control" placeholder="Parowanie feromonów" %}
+        </div>
+        <div>
+            <label for="{{ form.q.id_for_label }}" class="form-label">Pozostawiane feromony:</label>
+            <span class="float-right" id="qValue">1</span>
+            {% render_field form.q class="form-control" placeholder="Pozostawiane feromony" %}
+        </div>
+        <div>
+            <label for="{{ form.speed.id_for_label }}" class="form-label">Dokładność obliczeń:</label>
+            {% render_field form.speed class="form-control" placeholder="Dokładność obliczeń" %}
+        </div>
+	</form>
+
+    <script>
+        $(document).ready(function () {
+            function updateRangeValue(inputId, spanId) {
+                $(inputId).on('input', function () {
+                    $(spanId).text($(this).val());
+                });
+            }
+            updateRangeValue('#id_ants', '#antsValue');
+            updateRangeValue('#id_iterations', '#iterationsValue');
+            updateRangeValue('#id_alpha', '#alphaValue');
+            updateRangeValue('#id_beta', '#betaValue');
+            updateRangeValue('#id_evaporation_rate', '#evaporationRateValue');
+            updateRangeValue('#id_q', '#qValue');
+        });
+    </script>
+{% endwith %}

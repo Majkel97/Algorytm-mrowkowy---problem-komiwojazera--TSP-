@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Main page {% endblock %}
+{% block head %}
+    <link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
+    <style>
+    .loader {
+        width: 48px;
+        height: 48px;
+        border: 5px solid #FFF;
+        border-bottom-color: #003cff;
+        border-radius: 50%;
+        display: inline-block;
+        box-sizing: border-box;
+        animation: rotation 1s linear infinite;
+        }
+
+        @keyframes rotation {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    } 
+    </style>
+{% endblock %}
+{% block content %} 
+<div class="popup" id="myPopup">
+    <p>Mrówki szukają najkrótszej drogi!</p>
+    <p>Ekran zostanie odświezony po wykonaniu obliczeń!</p>
+    <span class="loader"></span>
+</div>
+
+<div class="row align-items-start">
+    <div class="col-12 p-0 mb-3" >
+        <a href="{% url 'test_citites_set_1' %}" class="btn btn-primary">Polskie miasta wojewódzkie</a>
+        <a href="{% url 'test_citites_set_2' %}" class="btn btn-primary">Miasta testowe 1</a>
+        <a href="{% url 'test_citites_set_3' %}" class="btn btn-primary">Miasta testowe 2</a>
+        <a href="{% url 'reset_data' %}" class="btn btn-danger float-right ml-2">Zresetuj dane</a>
+        <a hx-get="{% url 'info' %}" hx-target="#dialog" class="btn btn-warning float-right ml-2">Opis parametrów</a>
+        <a hx-get="{% url 'desc' %}" hx-target="#dialog" class="btn btn-warning float-right">Zasada działania algorytmu</a>
+    </div>
+
+</div>
+
+<div class="row align-items-start">
+    <div class="col-8  border rounded p-0" >
+        <div hx-trigger="load, citiesListChanged from:body" hx-get="{% url 'load_map' %}" hx-target="this"></div>
+    </div>
+    <div class="col-2">
+        <div hx-trigger="load, configListChanged from:body" hx-get="{% url 'config' %}" hx-target="this"></div>
+    </div>
+    <div class="col-2 border rounded pl-3 pr-3">
+        <button hx-get="{% url 'select_cities' %}" hx-target="#dialog" class="btn btn-primary mt-3 w-100">Dodaj miasto</button></br>
+        <hr>
+        <div hx-trigger="load, citiesListChanged from:body" hx-get="{% url 'display_cities' %}" hx-target="this"></div>
+    </div>
+</div>
+<div class="row align-items-start mt-3">
+    <div class="col-8" >
+        <div hx-trigger="load, logsListChanged from:body" hx-get="{% url 'logs' %}" hx-target="this"></div>
+    </div>
+    <div class="col-4" >
+        <div hx-trigger="load, paramsListChanged from:body" hx-get="{% url 'params' %}" hx-target="this"></div>
+    </div>
+</div>
+<script src = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+<script>
+    function toggleBlur() {
+        document.body.classList.toggle('blurred');
+        document.getElementById('myPopup').style.display = 'block';
+    }
+
+    function closePopup() {
+        document.getElementById('myPopup').style.display = 'none';
+    }
+
+    document.addEventListener('htmx:afterOnLoad', function(event) {
+        if (event.detail.xhr.status === 204) {
+            document.body.classList.remove('blurred');
+            closePopup();
+        }
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,33 @@
+version: "3.7"
+services:
+  app:
+    build: 
+      context: ..
+      dockerfile: .docker/Dockerfile
+    command: >
+      bash -c "python manage.py makemigrations
+      && python manage.py migrate --run-syncdb
+      && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ..:/code
+    ports:
+      - "8000:8000"
+      - "3000:3000"
+    container_name: app
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres
+    container_name: app-db
+    volumes:
+      - ../.data:/var/lib/postgresql/data/
+    env_file:
+      - ../app/.env
+    user: postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 10s
+      timeout: 5s
+      retries: 5

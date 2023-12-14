@@ -1,0 +1,6 @@
+{% load static %}
+
+{% for city in cities %}
+        {{city.0}}
+        <i type="button" class="float-right" hx-get="{% url 'delete_city' forloop.counter0 %}"><img src="{% static 'img/bin.png' %}" height="16px"/></i><br>
+{% endfor %}
